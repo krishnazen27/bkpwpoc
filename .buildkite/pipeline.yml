@@ -1,0 +1,11 @@
+steps:
+  - label: ":pipeline: Checkout code and run Playwright tests"
+    key: "run-playwright-tests"
+    agents:
+      queue: "default"  # optional — depends on your Buildkite setup
+    commands:
+      - echo "--- Installing dependencies"
+      - npm ci               # or `npm install` depending on your setup
+      - echo "--- Running Playwright tests"
+      - npx playwright install --with-deps
+      - npx playwright test --reporter=list
