@@ -5,9 +5,9 @@ steps:
       queue: "default"  # optional — depends on your Buildkite setup
     commands:
       - echo "--- Installing dependencies"
-      - npm ci               # or `npm install` depending on your setup
+      - npm ci
       - echo "--- Running Playwright tests"
       - npx playwright install --with-deps
-      - npx playwright test --reporter=list
       - npx playwright test --reporter=html
+      - echo "--- Uploading Playwright report"
       - buildkite-agent artifact upload "playwright-report/**"
