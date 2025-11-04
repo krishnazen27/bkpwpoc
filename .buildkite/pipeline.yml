@@ -9,3 +9,5 @@ steps:
       - echo "--- Running Playwright tests"
       - npx playwright install --with-deps
       - npx playwright test --reporter=list
+      - npx playwright test --reporter=html
+      - buildkite-agent artifact upload "playwright-report/**"
